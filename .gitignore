@@ -42,3 +42,4 @@ app-example
 /ios
 /android
 /.idx/mcp.json
+firebase-debug.log
