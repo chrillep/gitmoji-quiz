@@ -1,0 +1,57 @@
+{
+    "$schema": "https://docs.renovatebot.com/renovate-schema.json",
+    "extends": [
+        "config:best-practices",
+        "schedule:weekly",
+        ":semanticCommits",
+        ":semanticCommitTypeAll(chore)",
+        ":semanticCommitScope(deps)",
+        ":automergeMinor"
+    ],
+    "forkProcessing": "enabled",
+    "commitMessageAction": "⬆️ Bump",
+    "commitMessageTopic": "{{depName}}",
+    "packageRules": [
+        {
+            "matchCategories": ["php"],
+            "addLabels": ["php"]
+        },
+        {
+            "matchCategories": ["js"],
+            "addLabels": ["javascript"]
+        },
+        {
+            "matchUpdateTypes": ["major", "minor", "patch", "pin"]
+        },
+        {
+            "matchManagers": ["npm"],
+            "addLabels": ["npm"]
+        },
+        {
+            "matchManagers": ["composer"],
+            "addLabels": ["composer"],
+            "rangeStrategy": "bump"
+        },
+        {
+            "matchUpdateTypes": ["major"],
+            "addLabels": ["major"]
+        },
+        {
+            "matchUpdateTypes": ["minor"],
+            "addLabels": ["minor"]
+        },
+        {
+            "matchUpdateTypes": ["patch"],
+            "addLabels": ["patch"]
+        },
+        {
+            "matchDepTypes": ["action"],
+            "pinDigests": false
+        },
+        {
+            "matchManagers": ["dockerfile", "docker-compose"],
+            "pinDigests": false
+        }
+    ],
+    "timezone": "Europe/Stockholm"
+}
